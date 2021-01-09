@@ -19,14 +19,19 @@ btn_help: '❔ Bantuan'
 btn_go_back: '⬅️ Kembali'
 main_start_group: Hai yang disana! Saya masih hidup :3
 main_start_pm: |
-  Hai! Nama saya Haruka Aya - Saya di sini untuk membantu Anda mengelola grup Anda!
+  Hai! Nama saya *{}* - Saya di sini untuk membantu Anda mengelola grup Anda!
+
+  Bot ini 100% berbasis kode Sumber HarukaAya !!
+
+  dan beberapa perubahan
+  
   Klik tombol Bantuan untuk mencari tahu lebih lanjut tentang cara menggunakan saya dengan menggunakan potensi penuh saya.
 
   Bergabunglah dengan [Haruka Aya Group](https://t.me/HarukaAyaGroup) (@HarukaAyaGroup) jika Anda memerlukan dukungan atau bantuan.
 
   Ikuti [Haruka Aya](https://t.me/HarukaAya) (@HarukaAya) jika Anda ingin mengikuti berita, pembaruan, dan waktu bot berhenti!
 
-  Dibuat dengan cinta oleh @RealAkito\n\nIngin menambahkan saya ke grup Anda? [Klik di sini!](https://t.me/HarukaAyaBot?startgroup=true)
+  Dibuat dengan cinta oleh @RealAkito\n\nIngin menambahkan saya ke grup Anda? [Klik di sini!](https://t.me/{}?startgroup=true)
 main_start_btn_support: '📢 Grup Dukungan'
 main_start_btn_ctrlpnl: '🛠 Panel kontrol'
 main_start_btn_lang: '🇮🇩 Bahasa'
