@@ -374,9 +374,6 @@ def reply_filter(bot: Bot, update: Update) -> str:
     if not user:  #Ignore channel
         return
 
-    if user.id == 777000:
-        return
-
     chat_warn_filters = sql.get_chat_warn_triggers(chat.id)
     to_match = extract_text(message)
     if not to_match:

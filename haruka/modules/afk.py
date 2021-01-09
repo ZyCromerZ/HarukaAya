@@ -38,9 +38,6 @@ def afk(bot: Bot, update: Update):
     if not user:  # ignore channels
         return
 
-    if user.id == 777000:
-        return
-
     args = update.effective_message.text.split(None, 1)
     if len(args) >= 2:
         reason = args[1]
