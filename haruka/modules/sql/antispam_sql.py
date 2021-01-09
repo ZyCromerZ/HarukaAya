@@ -61,6 +61,7 @@ AntispamSettings.__table__.create(checkfirst=True)
 
 ANTISPAMSETTING = set()
 
+GBANSTAT_LIST = {}
 
 def enable_antispam(chat_id):
     with ASPAM_SETTING_LOCK:
