@@ -130,50 +130,26 @@ antiflood_help: |
   - /setflood <number/off>: establece el número de mensajes en los que un usuario debe actuar.
 #Antispam
 modname_antispam: Antispam
-antispam_err_usr_sudo: '¡Espio con mis pequeños ojos... una guerra de usuario sudo! ¿Por qué se están encendiendo unos a otros?'
-antispam_err_usr_support: '¡OOOOH, alguien está intentando banear a un usuario de soporte! *agarra popcorn*'
-antispam_err_usr_bot: '-_- Tan divertido, déjame gban a mí mismo, ¿por qué no lo hago? Buen intento.'
-antispam_err_not_usr: '¡Eso no es un usuario!'
-antispam_err_usr_deleted: '¡Esa es una cuenta eliminada! ¿Por qué incluso molestar a ellos?'
-antispam_err_no_new_reason: Este usuario ya está baneado; cambiaría la razón, pero no me has dado uno...
-antispam_logger_update_gban: |
-  <b>Nueva razón del Ban Global</b>
-  <b>Administrador Sudo:</b> {}
-  <b>Usuario:</b> {}
-  <b>ID:</b> <code>{}</code>
-  <b>Razón Anterior:</b> {}
-  <b>Razón Nueva:</b>{}
-antispam_reason_updated: "Este usuario ya ha sido baneado. He actualizado la razón.\nRazón anterior: <code>{}</code>\nNueva razón: <code>{}</code>"
-antispam_new_gban: |
-  <b>Inicializando Ban Global</b>
-  <b>Usuario:</b> {}
-  <b>ID:</b> <code>{}</code>
-  <b>Razón:</b>{}
-antispam_logger_new_gban: |
-  <b>Ban Global</b>
-  <b>Admin de Sudo:</b> {}
-  <b>Usuario:</b> {}
-  <b>ID:</b> <code>{}</code>
-  <b>Motivo:</b>{}
-antispam_no_reason: No hay razón dada
-antispam_user_not_gbanned: '¡Este usuario no está bloqueado!'
-antispam_ungbanned: Daré a {} una segunda oportunidad, globalmente.
-antispam_logger_ungban: |
-  <b>Ban Global Removal</b>
-  <b>Sudo Admin:</b> {}
-  <b>Usuario:</b> {}
-  <b>ID:</b> <code>{}</code>
-  <b>Razón:</b>{}
-antispam_err_ungban: "No se pudo desbloquear debido a: {}"
-antispam_checkban_user_removed: "*Este usuario está baneado y ha sido eliminado.*\nRazón: `{}`"
-antispam_on: He habilitado seguridad antispam en este grupo. Esto te ayudará a protegerte de spammers, personajes desagradables y los trols más grandes.
-antispam_off: He deshabilitado la seguridad antispam en este grupo. Los GBans ya no afectarán a tus usuarios. ¡Estarás menos protegido de trols y spammers!
-antispam_err_wrong_arg: "¡Dame algunos argumentos para elegir un ajuste! encendido/apagado, sí/no!\n\nTu configuración actual es: {}\nSi es verdadero, cualquier gbans que ocurra también sucederá en tu grupo. Cuando False, no te dejarán a merced de los spammers."
-antispam_userinfo_gbanned: "Globalmente baneado: <b>{}</b>"
-antispam_userinfo_gban_reason: "\nMotivo: {}"
-antispam_chatsettings_gban: "Este chat está cumpliendo *gbans*: `{}`."
-anitspam_appeal: \n<b>Apelar en:</b> @HarukaAyaGroup
-antispam_spamwatch_banned: "<b>Este usuario ha sido detectado como spambot por SpamWatch y ha sido removido!</b>\n\n<b>Razón</b>: {}"
+antispam_enable: |
+  I've enabled antispam security in this group. This will help protect you from spammers, unsavoury characters, and the biggest trolls.
+antispam_disable: |
+  I've disabled antispam security in this group. GBans wont affect your users anymore. You'll be less protected from any trolls and spammers though! And i am little disappointed too. 😶
+antispam_info: |
+  Give me some arguments to choose a setting! on/off, yes/no!\n
+  Your current setting is: {}\n
+  When True, any gbans that happen will also happen in your group.
+  When False, they won't, leaving you at the possible mercy of
+  spammers.
+antispam_gban: |
+  Globally banned: <b>{}</b>
+antispam_gmuted: |
+  
+  Globally muted: <b>{}</b>
+antispam_reason: |
+  
+  Reason: {}
+antispam_yes: 'Yes'
+antispam_no: 'No'
 antispam_help: |
   Los propietarios de los robots utilizan el antispam para prohibir los spammers en todos los grupos. Esto ayuda a protegerte a ti y a tus grupos eliminando los flujos de spam tan pronto como sea posible. Esto está activado por defecto, pero puedes cambiar esto usando el comando.\n
   *Solo administrador:*
@@ -295,8 +271,8 @@ cust_filters_add_success: '¡Handler ''{}'' añadido en *{}*!'
 cust_filters_list_empty: '¡No hay ningún filtro activo en {}!'
 cust_filters_stop_success: Sí, dejaré de responder a eso en *{}*.
 cust_filters_err_wrong_filter: Eso no es un filtro activo - ejecuta /filter para todos los filtros activos.
-cust_filters_err_protocol: Parece que está intentando utilizar un protocolo url no soportado. Telegram no soporta botones para algunos protocolos, como tg://. Inténtalo de nuevo o pide ayuda en @HarukaAyaGroup.
-cust_filters_err_badformat: Este filtro no pudo ser enviado, ya que está mal formateado. Pregunte en @HarukaAyaGroup si no puede averiguar por qué!
+cust_filters_err_protocol: Parece que está intentando utilizar un protocolo url no soportado. Telegram no soporta botones para algunos protocolos, como tg://.
+cust_filters_err_badformat: Este filtro no pudo ser enviado, ya que está mal formateado.
 cust_filters_chatsettings_stats: Hay filtros personalizados `{}` aquí.
 cust_filters_cleanup_success: "{} filtros de este chat han sido eliminados."
 cust_filters_help: |
@@ -335,7 +311,7 @@ disable_help: |
   - /disable <cmd name>: Desactivar un comando
 #Feds
 modname_feds: Federaciones
-feds_create_fail: '¡Creación de la Federación fallida! Pídele ayuda en @HarukaAyaGroup.'
+feds_create_fail: '¡Creación de la Federación fallida!'
 feds_create_success: "*¡Has creado con éxito una nueva federación!\nNombre: `{}`\nID: `{}`\n\nEjecuta el comando de abajo en grupos para añadirlos a la federación:\n`/joinfed {}`"
 feds_create_success_logger: "La Federación <b>{}</b> ha sido creada con ID: <pre>{}</pre>"
 feds_err_no_args: Por favor, escriba el nombre de la federación.
@@ -347,7 +323,7 @@ feds_group_not_in_fed: '¡Este grupo no está en ninguna federación!'
 feds_group_part_of_fed: "Este chat es parte de la siguiente federación:"
 feds_group_joined_fed: Uh, ¿Te vas a unir a dos federaciones en un chat?
 feds_fedid_invalid: Por favor, introduzca un ID de la Federación válido.
-feds_join_unknown_err: No se pudo unirse a la federación debido a un error desconocido, pide ayuda en @HarukaAyaGroup.
+feds_join_unknown_err: No se pudo unirse a la federación debido a un error desconocido.
 feds_join_success: '¡Chat unido a federación!'
 feds_leave_success: "¡Este chat ha dejado la federación: {}!"
 feds_leave_not_joined: '¿Cómo puedes dejar una federación que nunca te has unido?!'
@@ -601,7 +577,7 @@ note_msg_del: "Parece que el remitente original de esta nota ha eliminado su men
 note_url_invalid: "¡La URL del botón no es válida! ¡Por favor, actualiza esta nota!"
 note_mention_invalid: "Parece que intentaste mencionar a alguien que nunca he visto antes. ¡Reenvía uno de sus mensajes para mí y seré capaz de etiquetarlos!"
 note_incorrect_import: "Esta nota era un archivo importado incorrectamente de otro bot - No puedo usarlo. Guárdelo manualmente si es necesario. Lo eliminaré de tu lista de notas."
-note_cannot_send: "Esta nota no pudo ser enviada, ya que está formateada incorrectamente. Por favor, pregunte en @HarukaAyaGroup si no puede averiguar por qué!"
+note_cannot_send: "Esta nota no pudo ser enviada, ya que está formateada incorrectamente. Por favor!"
 get_invalid: "¡Falta el nombre de la nota! Escribe el nombre de la nota que quieres obtener."
 note_is_local: "notas locales"
 save_invalid: "¡No hay nada que guardar!"

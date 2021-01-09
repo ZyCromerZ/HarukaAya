@@ -139,36 +139,26 @@ antiflood_help: |
   - /setflood <number/off>: mengatur jumlah pesan untuk mengambil tindakan pada pengguna.
 #Antispam
 modname_antispam: Keamanan Antispam
-antispam_err_usr_sudo: Saya memata-matai dengan mata kecil saya... perang pengguna sudo! Kenapa kalian saling berpaling?
-antispam_err_usr_support: OOOH, seseorang sedang mencoba untuk mencekal pengguna pendukung! *meraih popcorn*
-antispam_err_usr_bot: '-_- Sangat lucu, biarkan aku mencekal diri sendiri, kenapa tidak? Usaha yang bagus.'
-antispam_err_not_usr: Itu bukan pengguna!
-antispam_err_usr_deleted: Itu akun yang dihapus! Kenapa repot-repot memanggil mereka?
-antispam_err_no_new_reason: Pengguna ini sudah dicekal; Saya akan mengubah alasannya, tetapi Anda belum memberi saya satu...
-antispam_logger_update_gban: |
-  <b>Alasan Baru Dicekal Secara Global</b>\n
-  <b>Admin Sudo:</b> {}\n
-  <b>Pengguna:</b> {}\n
-  <b>ID: </b> <code>{}</code>\n
-  <b>Alasan Sebelumnya:</b> {}\n
-  <b>Alasan Baru:</b> {}
-antispam_reason_updated: "Pengguna ini telah dicekal. Saya telah memperbarui alasannya.\nAlasan sebelumnya: <code>{}</code>\nAlasan baru: <code>{}</code>"
-antispam_new_gban: Cekal Global {} dengan id <code>{}</code>...
-antispam_logger_new_gban: "{} adalah pengguna yang mencekal secara global {} dengan id <code>{}</code> dengan alasan berikut: <code>{}</code>."
-antispam_no_reason: Tidak ada alasan yang diberikan
-antispam_user_not_gbanned: Pengguna ini tidak dicekal secara global!
-antispam_ungbanned: Saya akan memberi {} kesempatan kedua, secara global.
-antispam_logger_ungban: "{} memiliki pengguna yang tidak dibolehkan {}."
-antispam_err_ungban: "Tidak dapat memblokir karena: {}"
-antispam_ungban_success: Berhasil diblokir!
-antispam_checkban_user_removed: "*Pengguna ini diblokir secara global dan telah dihapus.*\nAlasan: `{}`"
-antispam_on: Saya telah mengaktifkan keamanan antispam di grup ini. Ini akan membantu melindungi Anda dari spammer, karakter tidak sopan, dan tipuan tidak lucu.
-antispam_off: Saya telah menonaktifkan keamanan antispam di grup ini. GBans tidak akan memengaruhi pengguna Anda lagi. Anda tidak akan terlalu terlindungi dari tipuan dan spammer!
-antispam_err_wrong_arg: "Berikan saya beberapa argumen untuk memilih pengaturan! on/off, yes/no!\n\nPengaturan Anda saat ini adalah: {}\nKetika True, semua gbans yang terjadi juga akan terjadi di grup Anda. Ketika False, spammer tidak akan memberi belas kasihan pada Anda."
-antispam_userinfo_gbanned: "Dilarang secara global: <b>{}</b>"
-antispam_userinfo_gban_reason: "\nAlasan: {}"
-antispam_chatsettings_gban: "Obrolan ini memberlakukan *gbans*: `{}`."
-anitspam_appeal: \n<b>Banding di:</b> @HarukaAyaGroup
+antispam_enable: |
+  I've enabled antispam security in this group. This will help protect you from spammers, unsavoury characters, and the biggest trolls.
+antispam_disable: |
+  I've disabled antispam security in this group. GBans wont affect your users anymore. You'll be less protected from any trolls and spammers though! And i am little disappointed too. 😶
+antispam_info: |
+  Give me some arguments to choose a setting! on/off, yes/no!\n
+  Your current setting is: {}\n
+  When True, any gbans that happen will also happen in your group.
+  When False, they won't, leaving you at the possible mercy of
+  spammers.
+antispam_gban: |
+  Globally banned: <b>{}</b>
+antispam_gmuted: |
+  
+  Globally muted: <b>{}</b>
+antispam_reason: |
+  
+  Reason: {}
+antispam_yes: 'Yes'
+antispam_no: 'No'
 antispam_help: |
   Antispam digunakan oleh pemilik bot untuk melarang spammer di semua grup. Ini membantu melindungi Anda dan grup Anda dengan menghapus pembanjir spam secepat mungkin. Ini diaktifkan secara default, tetapi Anda dapat mengubahnya dengan menggunakan perintah.\n
   *Hanya admin:*
@@ -292,8 +282,8 @@ cust_filters_add_success: Pemegang '{}' ditambahkan di *{}*!
 cust_filters_list_empty: Tidak ada filter aktif di {}!
 cust_filters_stop_success: Yap, saya akan berhenti membalas itu di *{}*.
 cust_filters_err_wrong_filter: Itu bukan filter aktif - jalankan /filters untuk mengetahui semua filter yang aktif.
-cust_filters_err_protocol: Anda tampaknya mencoba menggunakan protokol url yang tidak didukung. Telegram tidak mendukung tombol untuk beberapa protokol, seperti tg://. Silakan coba lagi atau minta bantuan di @HarukaAyaGroup.
-cust_filters_err_badformat: Filter ini tidak dapat dikirim, karena tidak memakai format dengan benar. Tanyakan di @HarukaAyaGroup jika Anda tidak tahu mengapa!
+cust_filters_err_protocol: Anda tampaknya mencoba menggunakan protokol url yang tidak didukung. Telegram tidak mendukung tombol untuk beberapa protokol, seperti tg://.
+cust_filters_err_badformat: Filter ini tidak dapat dikirim, karena tidak memakai format dengan benar.!
 cust_filters_chatsettings_stats: Ada `{}` filter khusus di sini.
 cust_filters_help: |
   Jadikan obrolan Anda lebih hidup dengan filter; Bot akan membalas kata-kata tertentu!
@@ -330,7 +320,7 @@ disable_help: |
   - /disable <cmd name>: Nonaktifkan perintah
 #Feds
 modname_feds: Federasi
-feds_create_fail: Pembuatan federasi gagal! Tanyakan pada @HarukaAyaGroup untuk bantuan.
+feds_create_fail: Pembuatan federasi gagal!
 feds_create_success: "*Anda telah berhasil membuat federasi baru!*\nNama: `{}`\nID: `{}`\n\nJalankan perintah di bawah dalam grup untuk menambahkannya ke federasi:\n`/joinfed {}`"
 feds_create_success_logger: "Federasi <b>{}</b> telah dibuat dengan ID: <pre>{}</pre>"
 feds_err_no_args: Silakan tulis nama federasi.
@@ -342,7 +332,7 @@ feds_group_not_in_fed: Grup ini tidak ada dalam federasi apa pun!
 feds_group_part_of_fed: "Obrolan ini adalah bagian dari federasi berikut:"
 feds_group_joined_fed: Eh, apakah Anda akan bergabung dengan dua federasi dalam satu obrolan?
 feds_fedid_invalid: Silakan masukkan ID Federasi yang valid.
-feds_join_unknown_err: Gagal bergabung ke federasi karena kesalahan yang tidak diketahui, minta bantuan di @HarukaAyaGroup.
+feds_join_unknown_err: Gagal bergabung ke federasi karena kesalahan yang tidak diketahui.
 feds_join_success: Obrolan bergabung dengan federasi!
 feds_leave_success: "Obrolan ini telah meninggalkan federasi: {}!"
 feds_leave_not_joined: Bagaimana Anda bisa meninggalkan federasi yang tidak pernah Anda ikuti?!
@@ -583,7 +573,7 @@ note_msg_del: "Sepertinya pengirim asli catatan ini telah menghapus pesan mereka
 note_url_invalid: "URL tombol tidak valid! Harap perbarui catatan ini!"
 note_mention_invalid: "Sepertinya Anda mencoba menyebutkan seseorang yang belum pernah saya lihat. Teruskan salah satu pesan mereka kepada saya dan saya akan menandai mereka!"
 note_incorrect_import: "Catatan ini adalah file yang salah diimpor dari bot lain - Saya tidak bisa menggunakannya. Simpan secara manual jika perlu. Saya akan menghapusnya dari daftar catatan Anda."
-note_cannot_send: "Catatan ini tidak dapat dikirim, karena diformat secara salah, Silakan tanyakan di @HarukaAyaGroup jika Anda tidak tahu mengapa!"
+note_cannot_send: "Catatan ini tidak dapat dikirim, karena diformat secara salah!"
 get_invalid: "Catat nama yang hilang! Tulis nama catatan yang ingin Anda dapatkan."
 note_is_local: "catatan lokal"
 save_invalid: "Tidak ada yang bisa disimpan!"

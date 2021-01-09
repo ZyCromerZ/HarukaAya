@@ -131,50 +131,26 @@ antiflood_help: |
   - /setflood <number/off>: sets the number of messages at which to take action on a user.
 #Antispam
 modname_antispam: Antispam
-antispam_err_usr_sudo: I spy with my little eyes... a sudo user war! Why are you guys turning on each other?
-antispam_err_usr_support: OOOH, someone's trying to gban a support user! *grabs popcorn*
-antispam_err_usr_bot: '-_- So funny, let me gban myself, why don''t I? Nice try.'
-antispam_err_not_usr: That's not a user!
-antispam_err_usr_deleted: That's a deleted account! Why even bother gbanning them?
-antispam_err_no_new_reason: This user is already gbanned; I'd change the reason, but you haven't given me one...
-antispam_logger_update_gban: |
-  <b>New Reason of Global Ban</b>
-  <b>Sudo Admin:</b> {}
-  <b>User:</b> {}
-  <b>ID:</b> <code>{}</code>
-  <b>Previous Reason:</b> {}
-  <b>New Reason:</b> {}
-antispam_reason_updated: "This user has already been gbanned. I have updated the reason.\nPrevious reason: <code>{}</code>\nNew reason: <code>{}</code>"
-antispam_new_gban: |
-  <b>Initializing Global Ban</b>
-  <b>User:</b> {}
-  <b>ID:</b> <code>{}</code>
-  <b>Reason:</b> {}
-antispam_logger_new_gban: |
-  <b>Global Ban</b>
-  <b>Sudo Admin:</b> {}
-  <b>User:</b> {} 
-  <b>ID:</b> <code>{}</code>
-  <b>Reason:</b> {}
-antispam_no_reason: No reason given
-antispam_user_not_gbanned: This user is not gbanned!
-antispam_ungbanned: I'll give {} a second chance, globally.
-antispam_logger_ungban: |
-  <b>Global Ban Removal</b>
-  <b>Sudo Admin:</b> {}
-  <b>User:</b> {}
-  <b>ID:</b> <code>{}</code>
-  <b>Reason:</b> {}
-antispam_err_ungban: "Could not ungban due to: {}"
-antispam_checkban_user_removed: "*This user is gbanned and has been removed.*\nReason: `{}`"
-antispam_on: I've enabled antispam security in this group. This will help to protect you from spammers, unsavoury characters, and the biggest trolls.
-antispam_off: I've disabled antispam security in this group. GBans won't affect your users anymore. You'll be less protected from any trolls and spammers though!
-antispam_err_wrong_arg: "Give me some arguments to choose a setting! on/off, yes/no!\n\nYour current setting is: {}\nWhen True, any gbans that happen will also happen in your group. When False, they won't, leaving you at the possible mercy of spammers."
-antispam_userinfo_gbanned: "Globally banned: <b>{}</b>"
-antispam_userinfo_gban_reason: "\nReason: {}"
-antispam_chatsettings_gban: "This chat is enforcing *gbans*: `{}`."
-anitspam_appeal: \n<b>Appeal at:</b> @HarukaAyaGroup
-antispam_spamwatch_banned: "<b>This user is detected as a spambot by SpamWatch and has been removed!</b>\n\n<b>Reason</b>: {}"
+antispam_enable: |
+  I've enabled antispam security in this group. This will help protect you from spammers, unsavoury characters, and the biggest trolls.
+antispam_disable: |
+  I've disabled antispam security in this group. GBans wont affect your users anymore. You'll be less protected from any trolls and spammers though! And i am little disappointed too. 😶
+antispam_info: |
+  Give me some arguments to choose a setting! on/off, yes/no!\n
+  Your current setting is: {}\n
+  When True, any gbans that happen will also happen in your group.
+  When False, they won't, leaving you at the possible mercy of
+  spammers.
+antispam_gban: |
+  Globally banned: <b>{}</b>
+antispam_gmuted: |
+  
+  Globally muted: <b>{}</b>
+antispam_reason: |
+  
+  Reason: {}
+antispam_yes: 'Yes'
+antispam_no: 'No'
 antispam_help: |
   Antispam is used by the bot owners to ban spammers across all groups. This helps protect you and your groups by removing spam flooders as quickly as possible. This is enabled by default, but you can change this by using the command.\n
   *Admin only:*

@@ -507,19 +507,12 @@ def antispam(bot: Bot, update: Update, args: List[str]):
     if len(args) > 0:
         if args[0].lower() in ["on", "yes"]:
             sql.enable_antispam(chat.id)
-            update.effective_message.reply_text(tld(chat.id, "I've enabled antispam security in this group. This will help protect you "
-                                                "from spammers, unsavoury characters, and the biggest trolls."))
+            update.effective_message.reply_text(tld(chat.id, "antispam_enable"))
         elif args[0].lower() in ["off", "no"]:
             sql.disable_antispam(chat.id)
-            update.effective_message.reply_text(tld(chat.id, "I've disabled antispam security in this group. GBans wont affect your users "
-                                                "anymore. You'll be less protected from any trolls and spammers "
-                                                "though! And i am little disappointed too. 😶"))
+            update.effective_message.reply_text(tld(chat.id, "antispam_disable"))
     else:
-        update.effective_message.reply_text(tld(chat.id, "Give me some arguments to choose a setting! on/off, yes/no!\n\n"
-                                            "Your current setting is: {}\n"
-                                            "When True, any gbans that happen will also happen in your group. "
-                                            "When False, they won't, leaving you at the possible mercy of "
-                                            "spammers.").format(sql.does_chat_gban(chat.id)))
+        update.effective_message.reply_text(tld(chat.id, "antispam_info").format(sql.does_chat_gban(chat.id)))
 
 #Gkick
 
@@ -598,23 +591,23 @@ def __user_info__(user_id, chat_id):
 
     if not user_id in SUDO_USERS:
 
-        text = tld(chat_id, "Globally banned: <b>{}</b>")
+        text = tld(chat_id,"antispam_gban")
         if is_gbanned:
-            text = text.format(tld(chat_id, "Yes"))
+            text = text.format(tld(chat_id, "antispam_yes"))
             user = sql.get_gbanned_user(user_id)
             if user.reason:
-                text += tld(chat_id, "\nReason: {}").format(html.escape(user.reason))
+                text += tld(chat_id, "antispam_reason").format(html.escape(user.reason))
         else:
-            text = text.format(tld(chat_id, "No"))
+            text = text.format(tld(chat_id, "antispam_no"))
         
-        text += tld(chat_id, "\nGlobally muted: <b>{}</b>")
+        text += tld(chat_id,"antispam_gmuted")
         if is_gmuted:
-            text = text.format(tld(chat_id, "Yes"))
+            text = text.format(tld(chat_id, "antispam_yes"))
             user = sql.get_gmuted_user(user_id)
             if user.reason:
-                text += tld(chat_id, "\nReason: {}").format(html.escape(user.reason))
+                text += tld(chat_id, "antispam_reason").format(html.escape(user.reason))
         else:
-            text = text.format(tld(chat_id, "No"))
+            text = text.format(tld(chat_id, "antispam_no"))
 
         return text
     else:

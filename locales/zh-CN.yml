@@ -139,37 +139,26 @@ antiflood_help: |
   - /setflood <number/off>: sets the number of messages at which to take action on a user.
 #Antispam
 modname_antispam: Antispam Security
-antispam_err_usr_sudo: I spy with my little eyes... a sudo user war! Why are you guys turning on each other?
-antispam_err_usr_support: OOOH, someone's trying to gban a support user! *grabs popcorn*
-antispam_err_usr_bot: '-_- So funny, let me gban myself, why don''t I? Nice try.'
-antispam_err_not_usr: That's not a user!
-antispam_err_usr_deleted: That's a deleted account! Why even bother gbanning them?
-antispam_err_no_new_reason: This user is already gbanned; I'd change the reason, but you haven't given me one...
-antispam_logger_update_gban: |
-  <b>New Reason of Global Ban</b>\n
-  <b>Sudo Admin:</b> {}\n
-  <b>User:</b> {}\n
-  <b>ID:</b> <code>{}</code>\n
-  <b>Previous Reason:</b> {}\n
-  <b>New Reason:</b> {}
-antispam_reason_updated: "This user has already been gbanned. I have updated the reason.\nPrevious reason: <code>{}</code>\nNew reason: <code>{}</code>"
-antispam_new_gban: Global Banning {} with the id <code>{}</code>...
-antispam_logger_new_gban: "{} is gbanning user {} with the id <code>{}</code> with the following reason: <code>{}</code>."
-antispam_no_reason: No reason given
-antispam_user_not_gbanned: This user is not gbanned!
-antispam_ungbanned: I'll give {} a second chance, globally.
-antispam_logger_ungban: "{} has ungbanned user {}."
-antispam_err_ungban: "Could not ungban due to: {}"
-antispam_ungban_success: Ungbanned successfully!
-antispam_checkban_user_removed: "*This user is gbanned and has been removed.*\nReason: `{}`"
-antispam_on: I've enabled antispam security in this group. This will help to protect you from spammers, unsavoury characters, and the biggest trolls.
-antispam_off: I've disabled antispam security in this group. GBans won't affect your users anymore. You'll be less protected from any trolls and spammers though!
-antispam_err_wrong_arg: "Give me some arguments to choose a setting! on/off, yes/no!\n\nYour current setting is: {}\nWhen True, any gbans that happen will also happen in your group. When False, they won't, leaving you at the possible mercy of spammers."
-antispam_userinfo_gbanned: "Globally banned: <b>{}</b>"
-antispam_userinfo_gban_reason: "\nReason: {}"
-antispam_chatsettings_gban: "This chat is enforcing *gbans*: `{}`."
-anitspam_appeal: \n<b>Appeal at:</b> @HarukaAyaGroup
-antispam_spamwatch_banned: "<b>This user is detected as a spambot by SpamWatch and has been removed!</b>\n\n<b>Reason</b>: {}"
+antispam_enable: |
+  I've enabled antispam security in this group. This will help protect you from spammers, unsavoury characters, and the biggest trolls.
+antispam_disable: |
+  I've disabled antispam security in this group. GBans wont affect your users anymore. You'll be less protected from any trolls and spammers though! And i am little disappointed too. 😶
+antispam_info: |
+  Give me some arguments to choose a setting! on/off, yes/no!\n
+  Your current setting is: {}\n
+  When True, any gbans that happen will also happen in your group.
+  When False, they won't, leaving you at the possible mercy of
+  spammers.
+antispam_gban: |
+  Globally banned: <b>{}</b>
+antispam_gmuted: |
+  
+  Globally muted: <b>{}</b>
+antispam_reason: |
+  
+  Reason: {}
+antispam_yes: 'Yes'
+antispam_no: 'No'
 antispam_help: |
   Antispam is used by the bot owners to ban spammers across all groups. This helps protect you and your groups by removing spam flooders as quickly as possible. This is enabled by default, but you can change this by using the command.\n
   *Admin only:*
@@ -293,8 +282,8 @@ cust_filters_add_success: Handler '{}' added in *{}*!
 cust_filters_list_empty: There aren't any active filters in {}!
 cust_filters_stop_success: Yep, I'll stop replying to that in *{}*.
 cust_filters_err_wrong_filter: That's not an active filter - run /filters for all active filters.
-cust_filters_err_protocol: You seem to be trying to use an unsupported url protocol. Telegram doesn't support buttons for some protocols, such as tg://. Please try again, or ask in @HarukaAyaGroup for help.
-cust_filters_err_badformat: This filter could not be sent, as it is incorrectly formatted. Ask in @HarukaAyaGroup if you can't figure out why!
+cust_filters_err_protocol: You seem to be trying to use an unsupported url protocol. Telegram doesn't support buttons for some protocols, such as tg://. Please try again, or
+cust_filters_err_badformat: This filter could not be sent, as it is incorrectly formatted.
 cust_filters_chatsettings_stats: There are `{}` custom filters here.
 cust_filters_cleanup_success: "{} filters from this chat have been removed."
 cust_filters_help: |
@@ -333,7 +322,7 @@ disable_help: |
   - /disable <cmd name>: Disable a command
 #Feds
 modname_feds: Federations
-feds_create_fail: Federation creation failed! Ask in @HarukaAyaGroup for help.
+feds_create_fail: Federation creation failed!
 feds_create_success: "*You have successfully created a new federation!*\nName: `{}`\nID: `{}`\n\nRun the command below in groups to add them to the federation:\n`/joinfed {}`"
 feds_create_success_logger: "Federation <b>{}</b> has been created with ID: <pre>{}</pre>"
 feds_err_no_args: Please write down the name of the federation.
@@ -345,7 +334,7 @@ feds_group_not_in_fed: This group is not in any federation!
 feds_group_part_of_fed: "This chat is part of the following federation:"
 feds_group_joined_fed: Uh, Are you gonna join two federations at one chat?
 feds_fedid_invalid: Please enter a valid Federation ID.
-feds_join_unknown_err: Failed to join to federation due to an unknown error, ask in @HarukaAyaGroup for help.
+feds_join_unknown_err: Failed to join to federation due to an unknown error
 feds_join_success: Chat joined to federation!
 feds_leave_success: "This chat has left the federation: {}!"
 feds_leave_not_joined: How can you leave a federation that you never joined?!
@@ -586,7 +575,7 @@ note_msg_del: "Looks like the original sender of this note has deleted their mes
 note_url_invalid: "The URL of the button is invalid! Please update this note!"
 note_mention_invalid: "Looks like you tried to mention someone I've never seen before. Forward one of their messages to me and I'll be able to tag them!"
 note_incorrect_import: "This note was an incorrectly imported file from another bot - I can't use it. Save it manually if needed. I'll remove it from your notes list."
-note_cannot_send: "This note could not be sent, as it is incorrectly formatted, Please ask in @HarukaAyaGroup if you can't figure out why!"
+note_cannot_send: "This note could not be sent, as it is incorrectly formatted!"
 get_invalid: "Note name missing! Write the name of the note you want to get."
 note_is_local: "local notes"
 save_invalid: "There's nothing to save!"
