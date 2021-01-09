@@ -178,6 +178,13 @@ antispam_help: |
   Los propietarios de los robots utilizan el antispam para prohibir los spammers en todos los grupos. Esto ayuda a protegerte a ti y a tus grupos eliminando los flujos de spam tan pronto como sea posible. Esto está activado por defecto, pero puedes cambiar esto usando el comando.\n
   *Solo administrador:*
   - /antispam <on/off/yes/no>: Cambia la configuración de seguridad antispam en el grupo o devuelve tu configuración actual (sin argumentos).
+  - /gban: global ban user
+  - /ungban: unglobal ban user
+  - /gbanlist: global banned list
+  - /gmute: global mute user
+  - /ungmute: unglobal mute user
+  - /gmutelist: global mute list
+  - /gkick: global kick
 #Bans
 modname_bans: Bans
 bans_err_usr_not_found: Parece que no puedo encontrar este usuario.

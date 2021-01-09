@@ -173,6 +173,13 @@ antispam_help: |
   Antispam digunakan oleh pemilik bot untuk melarang spammer di semua grup. Ini membantu melindungi Anda dan grup Anda dengan menghapus pembanjir spam secepat mungkin. Ini diaktifkan secara default, tetapi Anda dapat mengubahnya dengan menggunakan perintah.\n
   *Hanya admin:*
   - /antispam <on/off/yes/no>: Ubah pengaturan keamanan antispam di grup, atau kembalikan pengaturan Anda saat ini (saat tidak ada argumen).
+  - /gban: global ban user
+  - /ungban: unglobal ban user
+  - /gbanlist: global banned list
+  - /gmute: global mute user
+  - /ungmute: unglobal mute user
+  - /gmutelist: global mute list
+  - /gkick: global kick
 #Bans
 modname_bans: Pencekalan
 bans_err_usr_not_found: Sepertinya saya tidak dapat menemukan pengguna ini.

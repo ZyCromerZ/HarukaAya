@@ -178,6 +178,13 @@ antispam_help: |
   Анти спам используется владельцами ботов для запрета спамеров во всех группах. Это помогает защитить вас и ваши группы, удаляя спам-наводнения как можно быстрее. Это включено по умолчанию, но вы можете изменить это с помощью команды.\n
   *Только админ:*
   - /antispam <on/off/yes/no>: Измените параметры защиты от спама в группе или верните текущие настройки (если нет аргументов).
+  - /gban: global ban user
+  - /ungban: unglobal ban user
+  - /gbanlist: global banned list
+  - /gmute: global mute user
+  - /ungmute: unglobal mute user
+  - /gmutelist: global mute list
+  - /gkick: global kick
 #Bans
 modname_bans: Баны
 bans_err_usr_not_found: Я не могу найти этого пользователя.

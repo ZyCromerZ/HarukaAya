@@ -174,6 +174,13 @@ antispam_help: |
   Antispam is used by the bot owners to ban spammers across all groups. This helps protect you and your groups by removing spam flooders as quickly as possible. This is enabled by default, but you can change this by using the command.\n
   *Admin only:*
   - /antispam <on/off/yes/no>: Change antispam security settings in the group, or return your current settings(when no arguments).
+  - /gban: global ban user
+  - /ungban: unglobal ban user
+  - /gbanlist: global banned list
+  - /gmute: global mute user
+  - /ungmute: unglobal mute user
+  - /gmutelist: global mute list
+  - /gkick: global kick
 #Bans
 modname_bans: Bans
 bans_err_usr_not_found: I can't seem to find this user.
