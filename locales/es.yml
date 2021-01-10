@@ -18,17 +18,13 @@ main_start_group: '¡Hola! Estoy vivo :3'
 main_start_pm: |
   ¡Hola! Mi nombre es *{}* - ¡Estoy aquí para ayudarte a gestionar tus grupos!
 
-  Este bot 100% basado en el código fuente de HarukaAya !!
+  Este bot 100% basado en el código fuente de Haruka Aya bot !!
 
   y algunos cambios
   
   Haz clic en el botón Ayuda para saber más sobre cómo utilizarme con todo mi potencial.
 
-  Únete al [grupo de soporte para bot](https://t.me/HarukaAyaGroup) ( @HarukaAyaGroup ) si necesitas algún soporte para bots o ayuda.
-
-  Sigue a [Haruka Aya](https://t. e/HarukaAya) ( @HarukaAya ) si quieres mantenerte al día con las noticias del bot, las actualizaciones del bot y el tiempo de baja del bot!
-
-  Hecho con amor por @RealAkito\n\n¿Quieres añadirme a tu grupo? [¡Haz clic aquí!](t.me/{}}?startgroup=true)
+  Quieres añadirme a tu grupo? [¡Haz clic aquí!](t.me/{}}?startgroup=true)
 main_start_btn_support: '📢 Grupo de Soporte'
 main_start_btn_ctrlpnl: '🛠 Panel de control'
 main_start_btn_lang: '🇺🇸 Idioma'
