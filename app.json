@@ -58,6 +58,11 @@
       "SW_API": {
         "description": "PM https://t.me/SpamWatchBot to get API",
         "value": ""
+      },
+      "DATABASE_URL": {
+        "description": "(optional) ur database url",
+        "value": "",
+        "required": false
       }
     },
     "addons": [
