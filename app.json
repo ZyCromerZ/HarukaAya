@@ -72,5 +72,6 @@
           "version": "10"
         }
       }
-    ]
+    ],
+    "stack": "heroku-18"
   }
