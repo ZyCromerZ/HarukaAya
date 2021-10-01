@@ -70,6 +70,8 @@ except ValueError:
         "Your whitelisted users list does not contain valid integers.")
 
 DB_URI = os.environ.get('DATABASE_URL')
+if DB_URI and DB_URI.startswith("postgres://"):
+    DB_URI = DB_URI.replace("postgres://", "postgresql://", 1)
 LOAD = os.environ.get('LOAD')
 NO_LOAD = os.environ.get('NO_LOAD')
 DEL_CMDS = os.environ.get('DEL_CMDS')
