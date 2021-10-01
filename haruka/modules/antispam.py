@@ -23,7 +23,7 @@ from telegram import Update, Bot, ParseMode
 from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
 
 import haruka.modules.sql.antispam_sql as sql
-from haruka import dispatcher, STRICT_ANTISPAM, spamwatch_api, OWNER_ID, SUDO_USERS, GBAN_DUMP, MESSAGE_DUMP
+from haruka import dispatcher, STRICT_ANTISPAM, spamwatch_api, OWNER_ID, SUDO_USERS, GBAN_DUMP, MESSAGE_DUMP, WHITELIST_USERS
 from haruka.modules.helper_funcs.chat_status import user_admin, is_user_admin
 from haruka.modules.helper_funcs.filters import CustomFilters
 from haruka.modules.helper_funcs.extraction import extract_user, extract_user_and_text
@@ -47,6 +47,11 @@ def gban(bot: Bot, update: Update, args: List[str]):
 
     if int(user_id) in SUDO_USERS:
         message.reply_text(tld(chat.id, "antispam_err_usr_sudo"))
+        return
+
+    if int(user_id) in WHITELIST_USERS:
+        message.reply_text(
+            "This person is whitelisted, so they can't be gbanned!")
         return
 
     if user_id == bot.id:
@@ -278,6 +283,11 @@ def gmute(bot: Bot, update: Update, args: List[str]):
 
     if int(user_id) in SUDO_USERS:
         message.reply_text("I spy, with my little eye... a sudo user war! Why are you guys turning on each other?")
+        return
+
+    if int(user_id) in WHITELIST_USERS:
+        message.reply_text(
+            "This person is whitelisted, so they gmuted!")
         return
 
     if user_id == bot.id:
@@ -605,6 +615,11 @@ def gkick(bot: Bot, update: Update, args: List[str]):
         message.reply_text("OHHH! Someone's trying to gkick a sudo user! *Grabs popcorn*")
         return
 
+    if int(user_id) in WHITELIST_USERS:
+        message.reply_text(
+            "This person is whitelisted, so they can't be gkicked!")
+        return
+
     if int(user_id) == OWNER_ID:
         message.reply_text("Wow! Some's trying to gkick my owner! *Grabs Potato Chips*")
         return
@@ -641,7 +656,7 @@ def __user_info__(user_id, chat_id):
     is_gbanned = sql.is_user_gbanned(user_id)
     is_gmuted = sql.is_user_gmuted(user_id)
 
-    if not user_id in SUDO_USERS:
+    if not user_id in SUDO_USERS or not user_id in WHITELIST_USERS:
 
         text = tld(chat_id, "antispam_userinfo_gbanned")
         if is_gbanned:

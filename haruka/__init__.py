@@ -58,18 +58,31 @@ try:
 except ValueError:
     raise Exception("Your 'owner_username' must be set.")
 
+SUDO_USERS = []
 try:
-    SUDO_USERS = set(int(x) for x in os.environ.get('SUDO_USERS',None) or [])
+    GET = os.environ.get('SUDO_USERS',None)
+    if not GET == None:
+        GET = str.split(GET)
+        SUDO_USERS = set(int(x) for x in GET)
 except ValueError:
     raise Exception("Your sudo users list does not contain valid integers.")
 
+WHITELIST_USERS = []
 try:
-    WHITELIST_USERS = set(int(x) for x in os.environ.get('WHITELIST_USERS',None) or [])
+    GET = os.environ.get('WHITELIST_USERS',None)
+    if not GET == None:
+        GET = str.split(GET)
+        WHITELIST_USERS = set(int(x) for x in GET)
 except ValueError:
     raise Exception(
         "Your whitelisted users list does not contain valid integers.")
+
+GBAN_DUMP = []
 try:
-    GBAN_DUMP = set(int(x) for x in os.environ.get('GBAN_DUMP',None) or [])
+    GET = os.environ.get('GBAN_DUMP',None)
+    if not GET == None:
+        GET = str.split(GET)
+        GBAN_DUMP = set(int(x) for x in GET)
 except ValueError:
     raise Exception(
         "Your GBAN_DUMP list does not contain valid integers.")
@@ -78,18 +91,25 @@ DB_URI = os.environ.get('DATABASE_URL')
 if DB_URI and DB_URI.startswith("postgres://"):
     DB_URI = DB_URI.replace("postgres://", "postgresql://", 1)
 
+LOAD = []
 try:
-    LOAD = set(str(x) for x in os.environ.get('LOAD',None) or [])
+    GET = os.environ.get('LOAD',None)
+    if not GET == None:
+        LOAD = str.split(GET)
 except ValueError:
     raise Exception(
         "Load ??.")
+
+NO_LOAD = []
 try:
-    NO_LOAD = set(str(x) for x in os.environ.get('NO_LOAD',None) or [])
+    GET = os.environ.get('NO_LOAD',None)
+    if not GET == None:
+        NO_LOAD = str.split(GET)
 except ValueError:
     raise Exception(
         "NO_LOAD ??.")
 
-DEL_CMDS = os.environ.get('OWNER_USERNAME',None)
+DEL_CMDS = os.environ.get('DEL_CMDS',None)
 STRICT_ANTISPAM = os.environ.get('STRICT_ANTISPAM',None)
 WORKERS = 4
 

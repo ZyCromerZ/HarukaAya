@@ -165,7 +165,7 @@ antispam_off: He deshabilitado la seguridad antispam en este grupo. Los GBans ya
 antispam_err_wrong_arg: "¡Dame algunos argumentos para elegir un ajuste! encendido/apagado, sí/no!\n\nTu configuración actual es: {}\nSi es verdadero, cualquier gbans que ocurra también sucederá en tu grupo. Cuando False, no te dejarán a merced de los spammers."
 antispam_userinfo_gbanned: "Globalmente baneado: <b>{}</b>"
 antispam_userinfo_gban_reason: "\nMotivo: {}"
-antispam_userinfo_gmute: "Globally Muted: <b>{}</b>"
+antispam_userinfo_gmute: "\nGlobally Muted: <b>{}</b>"
 antispam_userinfo_gmute_reason: "\nReason: {}"
 antispam_chatsettings_gban: "Este chat está cumpliendo *gbans*: `{}`."
 anitspam_appeal: \n<b>Apelar en:</b> --
