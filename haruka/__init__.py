@@ -72,17 +72,27 @@ except ValueError:
 DB_URI = os.environ.get('DATABASE_URL')
 if DB_URI and DB_URI.startswith("postgres://"):
     DB_URI = DB_URI.replace("postgres://", "postgresql://", 1)
-LOAD = os.environ.get('LOAD')
-NO_LOAD = os.environ.get('NO_LOAD')
-DEL_CMDS = os.environ.get('DEL_CMDS')
-STRICT_ANTISPAM = os.environ.get('STRICT_ANTISPAM')
+
+try:
+    LOAD = set(str(x) for x in os.environ.get('LOAD',None) or [])
+except ValueError:
+    raise Exception(
+        "Load ??.")
+try:
+    NO_LOAD = set(str(x) for x in os.environ.get('NO_LOAD',None) or [])
+except ValueError:
+    raise Exception(
+        "NO_LOAD ??.")
+
+DEL_CMDS = os.environ.get('OWNER_USERNAME',None)
+STRICT_ANTISPAM = os.environ.get('STRICT_ANTISPAM',None)
 WORKERS = 4
 
 # Append OWNER_ID to SUDO_USERS
 SUDO_USERS.add(OWNER_ID)
 
 # SpamWatch
-spamwatch_api = os.environ.get('SW_API')
+spamwatch_api = os.environ.get('SW_API',None)
 
 if spamwatch_api == "None":
     spamwatch_api == None
