@@ -490,7 +490,7 @@ def fed_ban(bot: Bot, update: Update, args: List[str]):
                           user_chat.last_name, user_chat.username, reason)
         if not x:
             message.reply_text(
-                "Failed to ban from the federation! If this problem continues, ask in @HarukaAyaGroup for help!"
+                "Failed to ban from the federation!"
             )
             return
 
@@ -534,7 +534,7 @@ def fed_ban(bot: Bot, update: Update, args: List[str]):
                       user_chat.last_name, user_chat.username, reason)
     if not x:
         message.reply_text(
-            "Failed to ban from the federation! If this problem continues, ask in @HarukaAyaGroup for help."
+            "Failed to ban from the federation!"
         )
         return
 
@@ -667,7 +667,7 @@ def set_frules(bot: Bot, update: Update, args: List[str]):
         x = sql.set_frules(fed_id, markdown_rules)
         if not x:
             update.effective_message.reply_text(
-                "Big F! There is an error while setting federation rules! If you wonder why, please ask in @HarukaAyaGroup!"
+                "Big F! There is an error while setting federation rules!"
             )
             return
 
