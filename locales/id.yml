@@ -161,6 +161,8 @@ antispam_off: Saya telah menonaktifkan keamanan antispam di grup ini. GBans tida
 antispam_err_wrong_arg: "Berikan saya beberapa argumen untuk memilih pengaturan! on/off, yes/no!\n\nPengaturan Anda saat ini adalah: {}\nKetika True, semua gbans yang terjadi juga akan terjadi di grup Anda. Ketika False, spammer tidak akan memberi belas kasihan pada Anda."
 antispam_userinfo_gbanned: "Dilarang secara global: <b>{}</b>"
 antispam_userinfo_gban_reason: "\nAlasan: {}"
+antispam_userinfo_gmute: "Globally Muted: <b>{}</b>"
+antispam_userinfo_gmute_reason: "\nReason: {}"
 antispam_chatsettings_gban: "Obrolan ini memberlakukan *gbans*: `{}`."
 anitspam_appeal: \n<b>Banding di:</b> --
 antispam_help: |

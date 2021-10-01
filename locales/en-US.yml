@@ -166,6 +166,8 @@ antispam_off: I've disabled antispam security in this group. GBans won't affect 
 antispam_err_wrong_arg: "Give me some arguments to choose a setting! on/off, yes/no!\n\nYour current setting is: {}\nWhen True, any gbans that happen will also happen in your group. When False, they won't, leaving you at the possible mercy of spammers."
 antispam_userinfo_gbanned: "Globally banned: <b>{}</b>"
 antispam_userinfo_gban_reason: "\nReason: {}"
+antispam_userinfo_gmute: "Globally Muted: <b>{}</b>"
+antispam_userinfo_gmute_reason: "\nReason: {}"
 antispam_chatsettings_gban: "This chat is enforcing *gbans*: `{}`."
 anitspam_appeal: \n<b>Appeal at:</b> --
 antispam_spamwatch_banned: "<b>This user is detected as a spambot by SpamWatch and has been removed!</b>\n\n<b>Reason</b>: {}"
