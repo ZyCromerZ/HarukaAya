@@ -1,3 +1,5 @@
+# Deploy button
+[![Deploy To Heroku](https://www.herokucdn.com/deploy/button.svg)](https://dashboard.heroku.com/new?template=https%3A%2F%2Fgithub.com%2FZyCromerZ%2FHarukaAya)
 # Haruka Aya
 
 To anyone coming here to **clone this bot**, no support will be given for it. If you dare to join the support group and asks for how to run this bot, you'll be banned with no warning and you can blame no one but yourself for that.
