@@ -21,15 +21,17 @@ import requests
 
 from telegram import Update, Bot, ParseMode
 from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
+from telegram.error import BadRequest, TelegramError
+from telegram.utils.helpers import mention_html
 
 import haruka.modules.sql.antispam_sql as sql
+import haruka.modules.sql.users_sql as sql_users
 from haruka import dispatcher, STRICT_ANTISPAM, spamwatch_api, OWNER_ID, SUDO_USERS, GBAN_DUMP, MESSAGE_DUMP, WHITELIST_USERS
 from haruka.modules.helper_funcs.chat_status import user_admin, is_user_admin
 from haruka.modules.helper_funcs.filters import CustomFilters
 from haruka.modules.helper_funcs.extraction import extract_user, extract_user_and_text
 
 from haruka.modules.tr_engine.strings import tld
-from telegram.utils.helpers import mention_html
 
 GBAN_ENFORCE_GROUP = 6
 
@@ -175,31 +177,31 @@ def ungban(bot: Bot, update: Update, args: List[str]):
     except Exception:
         pass
 
-    # chats = get_all_chats()
-    # for chat in chats:
-    #     chat_id = chat.chat_id
+    chats = sql_users.get_all_chats() or []
+    for chat in chats:
+        chat_id = message.chat_id
 
-    #     # Check if this group has disabled gbans
-    #     if not sql.does_chat_gban(chat_id):
-    #         continue
+        # Check if this group has disabled gbans
+        if not sql.does_chat_gban(chat_id):
+            continue
 
-    #     try:
-    #         member = bot.get_chat_member(chat_id, user_id)
-    #         if member.status == 'kicked':
-    #             bot.unban_chat_member(chat_id, user_id)
+        try:
+            member = bot.get_chat_member(chat_id, user_id)
+            if member.status == 'kicked':
+                bot.unban_chat_member(chat_id, user_id)
 
-    #     except BadRequest as excp:
-    #         if excp.message in UNGBAN_ERRORS:
-    #             pass
-    #         else:
-    #             message.reply_text(
-    #                 tld(chat.id, "antispam_err_ungban").format(excp.message))
-    #             bot.send_message(
-    #                 OWNER_ID,
-    #                 tld(chat.id, "antispam_err_ungban").format(excp.message))
-    #             return
-    #     except TelegramError:
-    #         pass
+        except BadRequest as excp:
+            if excp.message in UNGBAN_ERRORS:
+                pass
+            else:
+                message.reply_text(
+                    tld(chat.id, "antispam_err_ungban").format(excp.message))
+                bot.send_message(
+                    OWNER_ID,
+                    tld(chat.id, "antispam_err_ungban").format(excp.message))
+                return
+        except TelegramError:
+            pass
 
     sql.ungban_user(user_id)
 
@@ -339,47 +341,47 @@ def gmute(bot: Bot, update: Update, args: List[str]):
 
     sql.gmute_user(user_id, user_chat.username or user_chat.first_name, reason)
 
-    #chats = get_all_chats()
-    #for chat in chats:
-    #    chat_id = chat.chat_id
+    chats = sql_users.get_all_chats() or []
+    for chat in chats:
+        chat_id = chat.chat_id
 
         # Check if this group has disabled gmutes
-        #if not sql.does_chat_gban(chat_id):
-        #    continue
+        if not sql.does_chat_gban(chat_id):
+            continue
 
-        #try:
-        #    bot.restrict_chat_member(chat_id, user_id, can_send_messages=False)
-        #except BadRequest as excp:
-        #    if excp.message == "User is an administrator of the chat":
-        #        pass
-        #    elif excp.message == "Chat not found":
-        #        pass
-        #    elif excp.message == "Not enough rights to restrict/unrestrict chat member":
-        #        pass
-        #    elif excp.message == "User_not_participant":
-        #        pass
-        #    elif excp.message == "Peer_id_invalid":  # Suspect this happens when a group is suspended by telegram.
-        #        pass
-        #    elif excp.message == "Group chat was deactivated":
-        #        pass
-        #    elif excp.message == "Need to be inviter of a user to kick it from a basic group":
-        #        pass
-        #    elif excp.message == "Chat_admin_required":
-        #        pass
-        #    elif excp.message == "Only the creator of a basic group can kick group administrators":
-        #        pass
-        #    elif excp.message == "Method is available only for supergroups":
-        #        pass
-        #    elif excp.message == "Can't demote chat creator":
-        #        pass
-        #    else:
-        #        message.reply_text("Could not gmute due to: {}".format(excp.message))
-        #        bot.send_message(MESSAGE_DUMP, "Could not gmute due to: {}".format(excp.message))
-        #        sql.ungmute_user(user_id)
-        #        os.environ['GPROCESS'] = '0'
-        #        return
-        #except TelegramError:
-        #    pass
+        try:
+            bot.restrict_chat_member(chat_id, user_id, can_send_messages=False)
+        except BadRequest as excp:
+            if excp.message == "User is an administrator of the chat":
+                pass
+            elif excp.message == "Chat not found":
+                pass
+            elif excp.message == "Not enough rights to restrict/unrestrict chat member":
+                pass
+            elif excp.message == "User_not_participant":
+                pass
+            elif excp.message == "Peer_id_invalid":  # Suspect this happens when a group is suspended by telegram.
+                pass
+            elif excp.message == "Group chat was deactivated":
+                pass
+            elif excp.message == "Need to be inviter of a user to kick it from a basic group":
+                pass
+            elif excp.message == "Chat_admin_required":
+                pass
+            elif excp.message == "Only the creator of a basic group can kick group administrators":
+                pass
+            elif excp.message == "Method is available only for supergroups":
+                pass
+            elif excp.message == "Can't demote chat creator":
+                pass
+            else:
+                message.reply_text("Could not gmute due to: {}".format(excp.message))
+                bot.send_message(MESSAGE_DUMP, "Could not gmute due to: {}".format(excp.message))
+                sql.ungmute_user(user_id)
+                os.environ['GPROCESS'] = '0'
+                return
+        except TelegramError:
+            pass
 
     bot.send_message(MESSAGE_DUMP, "gmute complete!")
     message.reply_text("Person has been gmuted.")
@@ -412,7 +414,7 @@ def ungmute(bot: Bot, update: Update, args: List[str]):
                                                    mention_html(user_chat.id, user_chat.first_name)),
                  parse_mode=ParseMode.HTML)
 
-    chats = get_all_chats()
+    chats = sql_users.get_all_chats() or []
     for chat in chats:
         chat_id = chat.chat_id
 
@@ -632,7 +634,7 @@ def gkick(bot: Bot, update: Update, args: List[str]):
         message.reply_text("That's a deleted account! Why u even bother gkicking dem")
         return
 
-    chats = get_all_chats()
+    chats = sql_users.get_all_chats() or []
     message.reply_text("Globally kicking user @{}".format(user_chat.username))
     for chat in chats:
         try:

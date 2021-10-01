@@ -27,7 +27,7 @@ from telegram.utils.helpers import mention_html
 
 import haruka.modules.sql.welcome_sql as sql
 from haruka import dispatcher, OWNER_ID, LOGGER, MESSAGE_DUMP, spamwatch_api
-from haruka.modules.sql.antispam_sql import is_user_gbanned
+from haruka.modules.sql.antispam_sql import is_user_gbanned, is_user_gmuted
 from haruka.modules.helper_funcs.chat_status import user_admin, is_user_ban_protected
 from haruka.modules.helper_funcs.misc import build_keyboard, revert_buttons
 from haruka.modules.helper_funcs.msg_types import get_welcome_type
@@ -157,6 +157,21 @@ def new_member(bot: Bot, update: Update):
                 pass
 
             if is_user_gbanned(new_mem.id):
+                try:
+                    chat.kick_member(new_mem.id)
+                except BadRequest:
+                    pass
+                except TelegramError:
+                    pass
+                return
+
+            if is_user_gmuted(new_mem.id):
+                try:
+                    bot.restrict_chat_member(chat.id, new_mem.id, can_send_messages=False)
+                except BadRequest:
+                    pass
+                except TelegramError:
+                    pass
                 return
 
             if new_mem.id == bot.id:
@@ -169,7 +184,23 @@ def new_member(bot: Bot, update: Update):
 
             else:
                 if is_user_gbanned(new_mem.id):
+                    try:
+                        chat.kick_member(new_mem.id)
+                    except BadRequest:
+                        pass
+                    except TelegramError:
+                        pass
                     return
+
+                if is_user_gmuted(new_mem.id):
+                    try:
+                        bot.restrict_chat_member(chat.id, new_mem.id, can_send_messages=False)
+                    except BadRequest:
+                        pass
+                    except TelegramError:
+                        pass
+                    return
+
                 # If welcome message is media, send with appropriate function
                 if welc_type != sql.Types.TEXT and welc_type != sql.Types.BUTTON_TEXT:
                     reply = update.message.message_id
@@ -413,6 +444,21 @@ def left_member(bot: Bot, update: Update):
                 pass
 
             if is_user_gbanned(left_mem.id):
+                try:
+                    chat.kick_member(new_mem.id)
+                except BadRequest:
+                    pass
+                except TelegramError:
+                    pass
+                return
+
+            if is_user_gmuted(new_mem.id):
+                try:
+                    bot.restrict_chat_member(chat_id, new_mem.id, can_send_messages=False)
+                except BadRequest:
+                    pass
+                except TelegramError:
+                    pass
                 return
 
             # Ignore bot being kicked
