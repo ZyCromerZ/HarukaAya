@@ -68,6 +68,11 @@ try:
 except ValueError:
     raise Exception(
         "Your whitelisted users list does not contain valid integers.")
+try:
+    GBAN_DUMP = set(int(x) for x in os.environ.get('GBAN_DUMP',None) or [])
+except ValueError:
+    raise Exception(
+        "Your GBAN_DUMP list does not contain valid integers.")
 
 DB_URI = os.environ.get('DATABASE_URL')
 if DB_URI and DB_URI.startswith("postgres://"):

@@ -23,8 +23,9 @@ from telegram import Update, Bot, ParseMode
 from telegram.ext import run_async, CommandHandler, MessageHandler, Filters
 
 import haruka.modules.sql.antispam_sql as sql
-from haruka import dispatcher, STRICT_ANTISPAM, spamwatch_api
+from haruka import dispatcher, STRICT_ANTISPAM, spamwatch_api, OWNER_ID, SUDO_USERS, GBAN_DUMP
 from haruka.modules.helper_funcs.chat_status import user_admin, is_user_admin
+from haruka.modules.helper_funcs.filters import CustomFilters
 
 from haruka.modules.tr_engine.strings import tld
 
@@ -44,10 +45,6 @@ def gban(bot: Bot, update: Update, args: List[str]):
 
     if int(user_id) in SUDO_USERS:
         message.reply_text(tld(chat.id, "antispam_err_usr_sudo"))
-        return
-
-    if int(user_id) in SUPPORT_USERS:
-        message.reply_text(tld(chat.id, "antispam_err_usr_support"))
         return
 
     if user_id == bot.id:
@@ -371,19 +368,16 @@ ANTISPAM_STATUS = CommandHandler("antispam",
 GBAN_HANDLER = CommandHandler("gban",
                               gban,
                               pass_args=True,
-                              filters=CustomFilters.sudo_filter
-                              | CustomFilters.support_filter)
+                              filters=CustomFilters.sudo_filter)
 UNGBAN_HANDLER = CommandHandler("ungban",
                                 ungban,
                                 pass_args=True,
-                                filters=CustomFilters.sudo_filter
-                                | CustomFilters.support_filter)
+                                filters=CustomFilters.sudo_filter)
 
 UNGBANQ_HANDLER = CommandHandler("ungban_quicc",
                                  ungban_quicc,
                                  pass_args=True,
-                                 filters=CustomFilters.sudo_filter
-                                 | CustomFilters.support_filter)
+                                 filters=CustomFilters.sudo_filter)
 
 GBAN_LIST = CommandHandler("gbanlist",
                            gbanlist,
