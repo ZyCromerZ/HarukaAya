@@ -57,11 +57,70 @@ class AntispamSettings(BASE):
         return "<Gban setting {} ({})>".format(self.chat_id, self.setting)
 
 
+GloballyBannedUsers.__table__.create(checkfirst=True)
 AntispamSettings.__table__.create(checkfirst=True)
 
-GBANSTAT_LIST = set()
+GBANNED_USERS_LOCK = threading.RLock()
 ASPAM_SETTING_LOCK = threading.RLock()
+GBANNED_LIST = set()
+GBANSTAT_LIST = set()
 ANTISPAMSETTING = set()
+
+
+def gban_user(user_id, name, reason=None):
+    with GBANNED_USERS_LOCK:
+        user = SESSION.query(GloballyBannedUsers).get(user_id)
+        if not user:
+            user = GloballyBannedUsers(user_id, name, reason)
+        else:
+            user.name = name
+            user.reason = reason
+
+        SESSION.merge(user)
+        SESSION.commit()
+        __load_gbanned_userid_list()
+
+
+def update_gban_reason(user_id, name, reason=None):
+    with GBANNED_USERS_LOCK:
+        user = SESSION.query(GloballyBannedUsers).get(user_id)
+        if not user:
+            return None
+        old_reason = user.reason
+        user.name = name
+        user.reason = reason
+
+        SESSION.merge(user)
+        SESSION.commit()
+        return old_reason
+
+
+def ungban_user(user_id):
+    with GBANNED_USERS_LOCK:
+        user = SESSION.query(GloballyBannedUsers).get(user_id)
+        if user:
+            SESSION.delete(user)
+
+        SESSION.commit()
+        __load_gbanned_userid_list()
+
+
+def is_user_gbanned(user_id):
+    return user_id in GBANNED_LIST
+
+
+def get_gbanned_user(user_id):
+    try:
+        return SESSION.query(GloballyBannedUsers).get(user_id)
+    finally:
+        SESSION.close()
+
+
+def get_gban_list():
+    try:
+        return [x.to_dict() for x in SESSION.query(GloballyBannedUsers).all()]
+    finally:
+        SESSION.close()
 
 
 def enable_antispam(chat_id):
@@ -93,6 +152,21 @@ def does_chat_gban(chat_id):
     return str(chat_id) not in GBANSTAT_LIST
 
 
+def num_gbanned_users():
+    return len(GBANNED_LIST)
+
+
+def __load_gbanned_userid_list():
+    global GBANNED_LIST
+    try:
+        GBANNED_LIST = {
+            x.user_id
+            for x in SESSION.query(GloballyBannedUsers).all()
+        }
+    finally:
+        SESSION.close()
+
+
 def __load_gban_stat_list():
     global GBANSTAT_LIST
     try:
@@ -115,4 +189,5 @@ def migrate_chat(old_chat_id, new_chat_id):
 
 
 # Create in memory userid to avoid disk access
+__load_gbanned_userid_list()
 __load_gban_stat_list()
