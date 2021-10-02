@@ -39,4 +39,4 @@ RUN git clone https://github.com/ZyCromerZ/HarukaAya.git -b master /data/HarukaA
 
 WORKDIR /data/HarukaAya
 
-CMD ["python", "-m", "haruka"]
+CMD ["python3", "-m", "haruka"]
