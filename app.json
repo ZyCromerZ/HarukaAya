@@ -73,5 +73,5 @@
         }
       }
     ],
-    "stack": "heroku-18"
+    "stack": "container"
   }
